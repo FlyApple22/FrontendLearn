@@ -1,0 +1,63 @@
+/* 最大的容器盒子 */
+.wrapper {
+  border: 2px solid black;
+  max-width: 1000px;
+  min-height: 1000px;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+/* 内容 */
+.header {
+  height: 60px;
+  background-color: lightcoral;
+  /* border: 2px solid black; */
+  margin: 10px 10px 20px;
+}
+
+.nav {
+  height: 60px;
+  background-color: navajowhite;
+  /* border: 2px solid black; */
+  margin: 10px 10px;
+}
+
+.sidebar {
+  width: 230px;
+  height: 200px;
+  background-color: cornflowerblue;
+  /* border: 2px solid black; */
+  float: left;
+  margin: 10px 10px;
+}
+
+.article {
+  width: 730px;
+  height: 200px;
+  background-color: deepskyblue;
+  /* border: 2px solid black; */
+  float: right;
+  margin: 10px 10px;
+}
+
+/* .grid{
+    border: 2px solid black;
+    background-color: black;
+} */
+
+.block {
+  width: 313px;
+  height: 313px;
+  float: left;
+  margin: 10px 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.footer {
+  height: 60px;
+  background-color: lightgreen;
+  margin: 10px;
+}
