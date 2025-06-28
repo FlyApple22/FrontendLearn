@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav {
+  height: 60px;
+  background-color: antiquewhite;
+  position: sticky;
+  top: 0;
+}
+
+.header {
+  height: 30px;
+  background-color: pink;
+}

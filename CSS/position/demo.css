@@ -6,24 +6,40 @@
 .container {
   background-color: antiquewhite;
   width: 500px;
+  position: relative;
 }
 
 .box1 {
   background-color: aquamarine;
   width: 100px;
   height: 100px;
-  position: sticky;
-  top: 50px;
 }
 
 .box2 {
   background-color: cadetblue;
   width: 100px;
   height: 100px;
+  position: relative;
+  top: -80px;
+  left: 20px;
+  z-index: 1;
 }
 
 .box3 {
   background-color: crimson;
   width: 100px;
   height: 100px;
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  z-index: 2;
+}
+
+.box4 {
+  background-color: beige;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 60px;
+  left: 60px;
 }
