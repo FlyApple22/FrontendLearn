@@ -5,12 +5,12 @@
 // break 完全跳出循环
 // continue 跳出当前条件 但继续下一个循环
 
-for (let i = 1; i <= 5; i++) {
-  if (i === 3) {
-    continue;
-  }
-  console.log(i);
-}
+// for (let i = 1; i <= 5; i++) {
+//   if (i === 3) {
+//     continue;
+//   }
+//   console.log(i);
+// }
 
 // 对象循环 for in
 // for (let 属性 in 对象) {}
