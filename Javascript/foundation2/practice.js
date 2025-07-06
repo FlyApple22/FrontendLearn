@@ -1,15 +1,39 @@
 // 1.定义一个函数，输入一个名字，返回欢迎语
-
+function sayHello(name) {
+  console.log('hello' + ' ' + name);
+}
+sayHello('小明');
 // 2.用数组存储 3 个颜色，打印第一个颜色
+let color = ['red', 'yellow', 'blue'];
 
 // 3.往一个数组中添加一个元素
-
+color.push("pink");
+console.log(color)
+console.log(color[color.length-1])
+console.log(color[3])
 // 4.定义一个对象表示学生，包含名字、年龄，并打印名字
-
+let student = {
+  name:"a",
+  age:18,
+  printName:function () {
+    console.log(this.name);
+  },
+  skill: ['red', 'yellow', 'blue']
+}
+console.log(student.age)
+student.printName()
+console.log(student.skill[1])
 // 5.对象中嵌套数组，打印出第二个爱好
 
 // 6.判断一个数是正数、负数还是零（if-else）
-
+let numbers = -1;
+if (numbers > 0) {
+  console.log("正数")
+}else if (numbers = 0) {
+  console.log("零")
+}else {
+  console.log("负数")
+}
 // 7.使用 switch 判断红绿黄灯
 
 // 8.用 for 循环打印 1~5
@@ -22,10 +46,15 @@
 // 请写一段代码来判断一个用户是否可以报名，并打印相应提示
 let user = {
   name: '小王',
-  age: 25,
+  age: 16,
   phone: '12345678901',
 };
 
+if (user.age > 18 && user.age < 60 && user.phone !=="") {
+  console.log("可以报名")
+}else{
+  console.log("不可报名")
+}
 //  二、一个班有 5 名学生的成绩，存储在一个数组中。请你用循环统计每位同学的成绩，并输出等级：
 //- 90 以上是 A
 //- 80~89 是 B
@@ -41,3 +70,5 @@ let cart = [
   { name: '面膜', price: 88, isMemberOnly: true },
   { name: '洗发水', price: 99, isMemberOnly: false },
 ];
+
+
