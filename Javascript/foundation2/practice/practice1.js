@@ -18,7 +18,7 @@ for (let i = 0; i < products.length; i++) {
 // 2.输出未激活的用户
 // 你的系统保存了一批用户激活状态，数据保存在一个对象中，键名是用户名，值是布尔类型，表示是否已激活。
 // 请打印所有尚未激活的用户名。
-// 使用两种方法 for循环 、 for in 循环  + continue
+// for in 循环  + continue
 
 let users = {
   Amy: true,
