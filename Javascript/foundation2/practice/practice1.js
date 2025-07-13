@@ -10,6 +10,11 @@ let products = [
   { name: '鼠标', price: 99 },
 ];
 
+for (let i = 0; i < products.length; i++) {
+  if (products[i].price <= 50) {
+    console.log(products[i].name + products[i].price);
+  }
+}
 // 2.输出未激活的用户
 // 你的系统保存了一批用户激活状态，数据保存在一个对象中，键名是用户名，值是布尔类型，表示是否已激活。
 // 请打印所有尚未激活的用户名。
@@ -22,7 +27,21 @@ let users = {
   Lucy: true,
 };
 
+for (let key in users) {
+  if (users[key] === true) {
+    continue;
+  }
+  console.log(key);
+}
+
 // 3.查找第一个能被 7 整除的数
 // 你有一组随机整数，现在需要查找第一个可以被 7 整除的数字。找到后立即停止循环并打印该数字。
 
 let numbers = [5, 9, 12, 20, 21, 28];
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] % 7 === 0) {
+    console.log(numbers[i]);
+    break;
+  }
+}
