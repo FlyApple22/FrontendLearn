@@ -14,6 +14,9 @@ let books = [
 // 3.用户名合法性校验
 // 你正在注册系统中编写验证逻辑，用户名需在 4~10 个字符之间，请完成判断逻辑。
 // 可将字符串看作数组 数组的某些方法同样可以使用
-let name = 'Tom123';
-
-
+let name = 'Tom12344444444';
+if (name.length < 10 && name.length > 4) {
+  console.log('合法');
+} else {
+  console.log('不合法');
+}

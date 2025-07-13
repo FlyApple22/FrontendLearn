@@ -15,6 +15,11 @@ let members = {
 
 let usernames = ['alice', 'bob', 'anna', 'mike'];
 
+for (let i = 0; i < usernames.length; i++) {
+  if(usernames[i].includes("a")){
+    console.log(usernames[i])
+  }
+}
 // 3.筛选可打折商品
 // 一份商品清单中只有价格低于 100 元且不是会员专属的商品才能参与限时折扣，请筛选出这些商品。并打印
 // 使用两种循环
