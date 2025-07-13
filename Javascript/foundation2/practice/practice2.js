@@ -18,7 +18,15 @@ let students = [
   { name: '小李', score: 60 },
   { name: '小张', score: 82 },
 ];
-
+for (let i = 0; i < students.length; i++) {
+  if (students[i].score > 90) {
+    console.log(`${students[i].name} 优秀`);
+  } else if (students[i].score > 70) {
+    console.log(`${students[i].name} 良好`);
+  } else {
+    console.log(`${students[i].name} 不及格`);
+  }
+}
 // 3.根据角色分配权限
 // 你在开发一个后台管理系统，根据用户的角色（admin、editor、viewer）分配权限并打印结果。
 // admin   -->   拥有所有权限;
