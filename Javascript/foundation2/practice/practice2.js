@@ -4,7 +4,12 @@
 
 let colors = ['红色', '蓝色', '红色', '绿色', '红色'];
 let count = 0;
-
+for (let i = 0; i < colors.length; i++) {
+  if (colors[i] === '红色') {
+    count += 1;
+  }
+}
+console.log(count);
 // 2.输出学生成绩等级
 // 你要根据一组学生的成绩，判断他们的等级：90 以上为优秀，70~89 为良好，70 以下为及格或不及格。
 // 打印结果
