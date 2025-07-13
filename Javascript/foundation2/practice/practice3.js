@@ -16,8 +16,8 @@ let members = {
 let usernames = ['alice', 'bob', 'anna', 'mike'];
 
 for (let i = 0; i < usernames.length; i++) {
-  if(usernames[i].includes("a")){
-    console.log(usernames[i])
+  if (usernames[i].includes('a')) {
+    console.log(usernames[i]);
   }
 }
 // 3.筛选可打折商品
@@ -29,3 +29,9 @@ let goods = [
   { name: '音响', price: 150, isMemberOnly: true },
   { name: '键盘', price: 80, isMemberOnly: false },
 ];
+
+for (let i = 0; i < goods.length; i++) {
+  if (goods[i].price < 100 && goods[i].isMemberOnly === false) {
+    console.log(goods[i].name);
+  }
+}

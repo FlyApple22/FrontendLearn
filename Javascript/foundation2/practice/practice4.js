@@ -1,8 +1,19 @@
 // 1.计算平均成绩
 // 你收到一个学生成绩数组，请计算他们的平均分并输出
-let scores = [80, 90, 75, 85];
+let scores = [80, 90, 75, 85, 80];
 let sum = 0;
+for (let i = 0; i < scores.length; i++) {
+  sum += scores[i];
+}
+console.log(sum / scores.length);
 
+let sum1 = 0;
+for (let i = 0; i < scores.length; i++) {
+  if (scores[i] === 80) {
+    sum1 += 1;
+  }
+}
+console.log(sum1);
 // 2.查找未归还图书
 // 图书馆系统中包含多本图书的信息，请找出所有尚未归还的图书。并打印
 let books = [
