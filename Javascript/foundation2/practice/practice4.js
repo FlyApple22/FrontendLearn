@@ -21,6 +21,11 @@ let books = [
   { title: 'HTML', returned: false },
   { title: 'CSS', returned: true },
 ];
+for (let i = 0; i < books.length; i++) {
+  if (books[i].returned === false) {
+    console.log(books[i].title);
+  }
+}
 
 // 3.用户名合法性校验
 // 你正在注册系统中编写验证逻辑，用户名需在 4~10 个字符之间，请完成判断逻辑。

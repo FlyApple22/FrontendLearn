@@ -5,6 +5,9 @@ let student = {
   age: 16,
   score: 88,
 };
+for (let i = 0; i < student.length; i++) {
+  console.log(student[i].name + ' ' + student[i].age + ' ' + student[i].score);
+}
 
 // 2.检查数组中是否包含 0
 // 一个数组中保存了一组用户输入的数字，请检查其中是否包含数字 0，如果有则立即提示。
