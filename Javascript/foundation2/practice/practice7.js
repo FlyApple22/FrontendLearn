@@ -36,9 +36,11 @@ let username = 'Tom123';
 let myFriends = ['小明', '小红', '小刚'];
 let yourFriends = ['小红', '小华', '小刚'];
 
-for (let i = 0; i < myFriends.length; i++) {
-  if (myFriends[i] === yourFriends[i]) {
-    console.log(myFriends[i]);
+for (let i = 0; i < myFriends.length; i++){
+  for (let j = 0;j<yourFriends.length;j++){
+    if (myFriends[i]===yourFriends[j]) {
+      console.log(myFriends[i])
+    }
   }
 }
 // 5.任务优先级过滤器
@@ -49,3 +51,9 @@ let tasks = {
   开会: 4,
   喝水: 1,
 };
+
+for (const key in tasks) {
+  if(tasks[key]===4||tasks[key]===5){
+    console.log(key)
+  }
+}

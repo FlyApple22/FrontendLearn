@@ -6,10 +6,11 @@ let courses = [
   { name: '人工智能导论', hours: 36, elective: true },
 ];
 for (let i = 0; i < courses.length; i++) {
-  if (courses[i].elective === true && courses[i].hours >= 30 && courses) {
+  if (courses[i].elective === true && courses[i].hours >= 30) {
     console.log(courses[i].name);
   }
 }
+
 // 2.员工打卡异常检测
 // 某公司保存了员工每天是否打卡的布尔数组，现在你需要找出那些打卡成功次数小于 5 次的员工名字。
 let attendance = {
@@ -18,6 +19,19 @@ let attendance = {
   Tom: [false, false, false, true, false, false, false],
 };
 
+let count2 = 0;
+for (const key in attendance) {
+  for (let j = 0; j < attendance[key].length; j++) {
+    if (attendance[key][j] === true) {
+      count2++;
+    }
+  }
+  if (count2 < 5) {
+    console.log(key);
+  }
+  count2 = 0;
+}
+
 // 3.学生选课统计
 // 你收到一个二维数组，表示 3 位学生各自选修的课程列表，请输出所有人选修的课程总数。
 let selections = [
@@ -25,7 +39,11 @@ let selections = [
   ['思修', '编程', '体育'], // 学生2
   ['英语', '编程', '绘画'], // 学生3
 ];
-
+let count = 0;
+for (let i = 0; i < selections.length; i++) {
+  count = count + 1;
+  console.log(count);
+}
 // 4.判断是否为质数
 // 你要判断一个输入的正整数是否为质数（只能被 1 和自身整除），只需判断到 n-1 即可，一旦发现能整除的立即结束。
 let n = 17;
@@ -38,3 +56,11 @@ let students = {
   小红: 22,
   小强: 21,
 };
+
+let count1 = 0;
+for (const key in students) {
+  count1++;
+  if (students[key] > count1) {
+    console.log(key);
+  }
+}

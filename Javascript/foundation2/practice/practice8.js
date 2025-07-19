@@ -1,16 +1,34 @@
 // 1.用户昵称长度验证
-// 请你编写一个函数 isValidName(name) 用于判断一个用户的昵称是否合法。合法昵称要求：去除前后空格后长度必须在 2 到 8 个字符之间。 .trim() .length
-
+// 请你编写一个函数 isValidName(name) 用于判断一个用户的昵称是否合法。
+// 合法昵称要求：去除前后空格后长度必须在 2 到 8 个字符之间。 .trim() .length
+let a = '  test';
+function isValidName(name) {}
 // 2.统计字母 E 出现次数
 //  有一段文本 "Excellent effort elevates everyone."，请编写代码统计字母  "e"（不区分大小写）出现的次数。 .toLowerCase() 、.split()
 
 // 3.邮箱后缀校验
 // 用户提交了邮箱地址，请你判断这个邮箱是否以  .com  结尾。
 
+function emailCheck(email) {
+  //第一步
+  if (email.endsWith('.com')) {
+    return 'yes';
+  } else {
+    return 'no';
+  }
+}
+console.log(emailCheck('1363415964@qqom'));
 // 4.提取用户名首字母并大写
 // 输入用户名，如 " alice "，请返回首字母的大写形式。例如返回 "A"
 
 let name = '  alice  ';
+function toUpper(name) {
+  name = name.trim();
+  name = name.charAt(0).toUpperCase() + name.slice(1, name.length);
+  return name;
+}
+
+console.log(toUpper(name));
 
 // 5.分割关键词为数组
 // 一个输入框里填写了关键词 "apple, banana, orange"，请你将它拆分成数组。
