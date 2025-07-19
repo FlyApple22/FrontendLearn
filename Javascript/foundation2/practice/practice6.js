@@ -18,6 +18,11 @@ let attendance = {
   Bob: [true, true, true, true, true, true, true],
   Tom: [false, false, false, true, false, false, false],
 };
+for (const key in attendance) {
+  for (let i = 0; i < attendance[key].length; i++) {
+    console.log(attendance[key][0]);
+  }
+}
 
 let count2 = 0;
 for (const key in attendance) {
@@ -36,14 +41,18 @@ for (const key in attendance) {
 // 你收到一个二维数组，表示 3 位学生各自选修的课程列表，请输出所有人选修的课程总数。
 let selections = [
   ['高数', '英语', '思修'], // 学生1
-  ['思修', '编程', '体育'], // 学生2
+  ['思修', '编程', '体育', 'music'], // 学生2
   ['英语', '编程', '绘画'], // 学生3
 ];
+
 let count = 0;
 for (let i = 0; i < selections.length; i++) {
-  count = count + 1;
-  console.log(count);
+  for (let j = 0; j < selections[i].length; j++) {
+    count++;
+  }
 }
+console.log(count);
+
 // 4.判断是否为质数
 // 你要判断一个输入的正整数是否为质数（只能被 1 和自身整除），只需判断到 n-1 即可，一旦发现能整除的立即结束。
 let n = 17;
@@ -64,3 +73,13 @@ for (const key in students) {
     console.log(key);
   }
 }
+
+let maxAge = 0;
+let studentName = '';
+for (const key in students) {
+  if (students[key] > maxAge) {
+    maxAge = students[key];
+    studentName = key;
+  }
+}
+console.log(studentName);

@@ -1,10 +1,36 @@
 // 1.用户昵称长度验证
 // 请你编写一个函数 isValidName(name) 用于判断一个用户的昵称是否合法。
 // 合法昵称要求：去除前后空格后长度必须在 2 到 8 个字符之间。 .trim() .length
-let a = '  test';
-function isValidName(name) {}
+
+// one
+function isValidName(name) {
+  // two 去掉空格
+  name = name.trim();
+  // three 判断是否在2-8个字符
+  // 三元运算符
+  let result = name.length >= 2 && name.length <= 8 ? '合法' : '不合法';
+  return result;
+}
+console.log(isValidName(' n  '));
+
 // 2.统计字母 E 出现次数
-//  有一段文本 "Excellent effort elevates everyone."，请编写代码统计字母  "e"（不区分大小写）出现的次数。 .toLowerCase() 、.split()
+//  有一段文本 "Excellent effort elevates everyone."，请编写代码统计字母  "e"（不区分大小写）出现的次数。
+//  .toLowerCase()
+
+function countE(testString) {
+  // one 全部转成小写
+  testString = testString.toLowerCase();
+  // two 累加器循环计数
+  let count = 0;
+  for (let char of testString) {
+    if (char === 'e') {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countE('Excellent effort elevates everyone.'));
 
 // 3.邮箱后缀校验
 // 用户提交了邮箱地址，请你判断这个邮箱是否以  .com  结尾。
