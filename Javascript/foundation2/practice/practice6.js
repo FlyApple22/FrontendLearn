@@ -5,7 +5,11 @@ let courses = [
   { name: '影视鉴赏', hours: 24, elective: true },
   { name: '人工智能导论', hours: 36, elective: true },
 ];
-
+for (let i = 0; i < courses.length; i++) {
+  if (courses[i].elective === true && courses[i].hours >= 30 && courses) {
+    console.log(courses[i].name);
+  }
+}
 // 2.员工打卡异常检测
 // 某公司保存了员工每天是否打卡的布尔数组，现在你需要找出那些打卡成功次数小于 5 次的员工名字。
 let attendance = {
