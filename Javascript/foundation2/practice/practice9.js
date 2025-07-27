@@ -2,6 +2,14 @@
 // 定义一个函数  getFailed(scores)，返回所有小于 60 的成绩数组。
 let firstScores = [85, 59, 40, 100, 60];
 
+function getFailed(scores) {
+  scores = scores.filter((n) => n < 60);
+
+  return scores;
+}
+
+console.log(getFailed(firstScores));
+
 // 2.所有分数+5分
 // 创建函数  addBonus(scores) ，将所有成绩都加 5 分并返回新的数组（不改变原数组）
 let secondScores = [70, 80, 90];

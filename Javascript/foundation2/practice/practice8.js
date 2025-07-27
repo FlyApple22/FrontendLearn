@@ -43,6 +43,7 @@ function emailCheck(email) {
     return 'no';
   }
 }
+
 console.log(emailCheck('1363415964@qqom'));
 // 4.提取用户名首字母并大写
 // 输入用户名，如 " alice "，请返回首字母的大写形式。例如返回 "A"
