@@ -1,60 +1,79 @@
-// 获取html  document.documentElement
-// 获取body  document.body
-// 通过 Id 去获取 document.getElementById();
-// 通过 Class 去获取 document.getElementsByClassName(); 返回的是类数组
-// 通过 Tag 去获取 document.getElementsByTagName(); 返回的是类数组
-// 通过 Name 去获取 document.getElementsByName();  处理表单
-// 通过选择器获取. document.querySelector(); 匹配符合条件的第一个
-//               document.querySelectorAll(); 匹配所有
+// 标记是否正在绘画
+let painting = false;
 
-// 文本操作 textContent->不会加载样式
-//         innerText -> 加载样式
-//         innerHtml -> 标签
+// 记录上一次绘画的起点坐标
+let startPoint = { x: undefined, y: undefined };
 
-// 属性操作 getAttribute() setAttribute()
+// 获取画布元素
+const canvas = document.getElementById('canvas');
+// 获取 canvas 的 2D 绘图上下文（画笔）
+const ctx = canvas.getContext('2d');
 
-// 事件绑定
-// html里写
-// Dom元素绑定
-// addEventListener 可以绑定多个
-// let a = document.getElementById('aaa');
-// a.addEventListener('click', function () {
-//   console.log(123);
-// });
+// 获取“清空”按钮
+const clearBtn = document.querySelector('#clear');
+// 获取“保存”按钮
+const saveBtn = document.querySelector('#save');
 
-//你的网站上展示了一批商品，每个商品以  <div class="product">  标签表示。现在需
-//要给每个商品添加“热销商品”字样，并将背景改为淡⻩色。
+// 当鼠标按下时，开始绘画
+canvas.onmousedown = (e) => {
+  // 获取鼠标在画布内的坐标（相对于 canvas 左上角）
+  let x = e.offsetX;
+  let y = e.offsetY;
 
-// function markHotProducts(className) {
-//   let a = document.getElementsByClassName(className);
-//   for (const b of a) {
-//     b.textContent = b.textContent + '-热销商品';
-//     b.style.backgroundColor = '#fff8dc';
-//   }
-// }
-// markHotProducts('products');
+  // 记录起点位置
+  startPoint = { x: x, y: y };
 
-//你的网站有一批段落，现在需要分析出哪一段文字最⻓，并将它背景设置为淡绿色，同时在控
-//制台输出所有段落的字数。
-// function highlightLongestParagraph() {
-//   let a = document.getElementsByClassName('para');
-//   let b = 0;
-//   let c = null;
-//   for (const element of a) {
-//     console.log(element.textContent.length);
-//     if (element.textContent.length > b) {
-//       b = element.textContent.length;
-//       c = element;
-//     }
-//   }
-//   c.style.backgroundColor = '#fff8dc ';
-// }
-// highlightLongestParagraph();
+  // 打开绘画开关
+  painting = true;
+};
 
-let e = document.getElementById('survey');
+// 当鼠标移动时，如果正在绘画，就画线
+canvas.onmousemove = (e) => {
+  let x = e.offsetX;
+  let y = e.offsetY;
 
-for (const element of e) {
-  element.addEventListener('click', function () {
-    element.style.backgroundColor = '#fff8dc';
-  });
+  // 当前鼠标位置
+  let newPoint = { x: x, y: y };
+
+  // 如果处于绘画状态，画一条线：从上一个点到当前位置
+  if (painting) {
+    drawLine(startPoint.x, startPoint.y, newPoint.x, newPoint.y);
+
+    // 更新起点，下一次移动时从这里继续画
+    startPoint = newPoint;
+  }
+};
+
+// 当鼠标抬起时，结束绘画
+canvas.onmouseup = () => {
+  painting = false; // 关闭绘画开关
+};
+
+// 封装画线函数：起点 (xStart,yStart) 到终点 (xEnd,yEnd)
+function drawLine(xStart, yStart, xEnd, yEnd) {
+  ctx.beginPath(); // 开始新路径
+  ctx.lineWidth = 3; // 设置线条宽度
+  ctx.moveTo(xStart, yStart); // 移动画笔到起点
+  ctx.lineTo(xEnd, yEnd); // 连接到终点
+  ctx.stroke(); // 绘制线条
+  ctx.closePath(); // 结束路径，防止下一次自动连接
 }
+
+// 点击“清空”按钮：用白色矩形覆盖整个画布
+clearBtn.onclick = () => {
+  ctx.fillStyle = '#ffffff'; // 设置填充颜色为白色
+  ctx.fillRect(0, 0, canvas.width, canvas.height); // 填满整个画布
+};
+
+// 点击“保存”按钮：导出画布为图片并下载
+saveBtn.onclick = () => {
+  // 把画布内容转为 base64 图片（JPG 格式）
+  const url = canvas.toDataURL('image/jpg');
+
+  // 创建一个 <a> 标签，模拟点击进行下载
+  const a = document.createElement('a');
+  a.href = url; // 设置链接为图片数据
+  a.download = '画板'; // 设置下载文件名
+  a.target = '_blank'; // 在新标签页打开（备用）
+  a.click(); // 触发点击，自动下载
+};

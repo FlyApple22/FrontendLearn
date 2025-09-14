@@ -1,0 +1,84 @@
+/* 全局基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background: #f0f2f5;
+  padding: 20px;
+}
+
+/* 顶部菜单栏 */
+.menu {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.menu .button {
+  padding: 10px 20px;
+  background: #4f86f7;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.menu .button:hover {
+  background: #3a66d6;
+  transform: translateY(-2px);
+}
+
+.menu .button:active {
+  transform: translateY(0);
+}
+
+/* 画板窗口 */
+.window {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 模拟窗口的 top bar */
+.window .top {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  background: #e8e8e8;
+}
+
+.window .top .button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #bbb;
+}
+
+.window .top .button:nth-child(1) {
+  background: #ff5f57; /* 关闭按钮 */
+}
+.window .top .button:nth-child(2) {
+  background: #febc2e; /* 最小化 */
+}
+.window .top .button:nth-child(3) {
+  background: #28c840; /* 最大化 */
+}
+
+/* 画布 */
+#canvas {
+  display: block;
+  border-top: 1px solid #ddd;
+}
