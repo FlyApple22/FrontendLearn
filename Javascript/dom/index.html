@@ -3,102 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Canvas 基础 Demo</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        background: #f7f7f7;
-      }
-      section {
-        margin-bottom: 50px;
-      }
-      h2 {
-        margin-bottom: 10px;
-      }
-      canvas {
-        border: 1px solid #ccc;
-        display: block;
-        margin-top: 10px;
-      }
-    </style>
+    <title>Document</title>
   </head>
   <body>
-    <!-- Demo 1：绘制矩形 -->
-    <section>
-      <h2>Demo 1：绘制矩形</h2>
-      <canvas id="canvas1" width="300" height="200"></canvas>
-      <script>
-        const c1 = document.getElementById('canvas1');
-        const ctx1 = c1.getContext('2d');
-
-        // 填充矩形
-        ctx1.fillStyle = 'skyblue'; // 设置填充颜色
-        ctx1.fillRect(20, 20, 100, 50); // 在 (20,20) 位置绘制 100x50 的矩形
-
-        // 描边矩形
-        ctx1.strokeStyle = 'red'; // 设置描边颜色
-        ctx1.strokeRect(150, 20, 100, 50); // 在 (150,20) 绘制空心矩形
-
-        // 清除矩形
-        ctx1.clearRect(70, 30, 30, 20); // 在蓝色矩形中间擦除一块透明区域
-      </script>
-    </section>
-
-    <!-- Demo 2：绘制圆形和文字 -->
-    <section>
-      <h2>Demo 2：绘制圆形和文字</h2>
-      <canvas id="canvas2" width="300" height="200"></canvas>
-      <script>
-        const c2 = document.getElementById('canvas2');
-        const ctx2 = c2.getContext('2d');
-
-        // 绘制一个圆
-        ctx2.beginPath(); // 开始新路径
-        ctx2.arc(100, 100, 50, 0, Math.PI * 2); // 圆心(100,100)，半径50，绘制整圆
-        ctx2.fillStyle = 'lightgreen'; // 填充颜色
-        ctx2.fill(); // 填充圆形
-        ctx2.stroke(); // 给圆加边框
-
-        // 写文字
-        ctx2.font = '20px Arial'; // 设置字体和大小
-        ctx2.fillStyle = 'black'; // 字体颜色
-        ctx2.fillText('Hello Canvas', 150, 110); // 在 (150,110) 位置写字
-      </script>
-    </section>
-
-    <!-- Demo 3：简单动画（小球移动） -->
-    <section>
-      <h2>Demo 3：简单动画（小球移动）</h2>
-      <canvas id="canvas3" width="300" height="200"></canvas>
-      <script>
-        const c3 = document.getElementById('canvas3');
-        const ctx3 = c3.getContext('2d');
-
-        let x = 20; // 小球初始位置
-        let y = 100;
-        let dx = 2; // 每一帧移动的水平距离
-
-        function drawBall() {
-          ctx3.clearRect(0, 0, c3.width, c3.height); // 每帧先清空画布
-          ctx3.beginPath();
-          ctx3.arc(x, y, 20, 0, Math.PI * 2); // 圆心 (x,y)，半径 20
-          ctx3.fillStyle = 'orange';
-          ctx3.fill();
-          ctx3.closePath();
-
-          x += dx; // 更新小球位置
-
-          // 碰到边缘反弹
-          if (x + 20 > c3.width || x - 20 < 0) {
-            dx = -dx; // 改变方向
-          }
-
-          requestAnimationFrame(drawBall); // 递归调用，保持动画循环
-        }
-
-        drawBall(); // 启动动画
-      </script>
-    </section>
+    <canvas
+      id="canvas"
+      width="500"
+      height="500"
+      style="border: 2px solid"
+    ></canvas>
   </body>
+  <script>
+    // 获取上下文对象
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    //绘制矩形
+    //有填充
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(50, 50, 100, 100);
+    //边框矩形
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(150, 150, 100, 100);
+
+    // 线条
+    ctx.beginPath();
+    ctx.moveTo(300, 300);
+    ctx.lineTo(400, 400);
+    ctx.stroke();
+
+    // 圆
+    ctx.beginPath();
+    ctx.arc(100, 100, 100, 0, Math.PI * 2);
+    ctx.fillStyle = 'green';
+    ctx.fill();
+
+    // 文字
+    // ctx.font = '50px Arial';
+    // ctx.fillStyle = 'purple';
+    // ctx.fillText('Hello canvas', 50, 200);
+  </script>
 </html>
