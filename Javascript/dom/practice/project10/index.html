@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      canvas {
+        background-color: white;
+        border: 3px solid black;
+      }
+    </style>
+  </head>
+  <canvas id="canvas" width="500px" height="500px"></canvas>
+  <body>
+    <script>
+      //拿到canvas上下文（ctx）-
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      //确定图形
+      let ball = {
+        r: 15,
+        x: 15,
+        y: 15,
+        dx: 10,
+        dy: 6,
+        color: 'blue',
+      };
+
+      //绘制小球
+      function drawBall() {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+        ctx.fillStyle = ball.color;
+        ctx.fill();
+      }
+
+      //更新坐标 &。临界值条件
+      function upDateBall() {
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+        if (ball.x + ball.r > canvas.width || ball.x - ball.r < 0) {
+          ball.dx = -ball.dx;
+        }
+        if (ball.y + ball.r > canvas.height || ball.y - ball.r < 0) {
+          ball.dy = -ball.dy;
+        }
+      }
+
+      //小球循环
+      function move() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        upDateBall();
+        requestAnimationFrame(move);
+      }
+      move();
+    </script>
+  </body>
+</html>
