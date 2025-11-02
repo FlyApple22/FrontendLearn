@@ -19,6 +19,46 @@
     <button id="clear">清空画布</button>
     <canvas id="canvas" width="500" height="400"></canvas>
 
-    <script></script>
+    <script>
+      //1.拿到canvas上下文（ctx）-> 2.区分鼠标状态 ->3.清空画布
+      const canvas = document.getElementById('canvas');
+      const button = document.getElementById('clear');
+      const ctx = canvas.getContext('2d');
+
+      let paint = false;
+      let a = { x: undefined, y: undefined };
+
+      canvas.onmousedown = (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        a = { x: x, y: y };
+        paint = true;
+      };
+
+      canvas.onmousemove = (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        let newPoint = { x: x, y: y };
+        console.log(paint);
+        if (paint) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(newPoint.x, newPoint.y);
+          ctx.stroke();
+        }
+        a = newPoint;
+      };
+
+      canvas.onmouseup = (e) => {
+        paint = false;
+      };
+
+      button.addEventListener('click', () => {
+        // console.log(123);
+        // ctx.fillStyle = 'white';
+        // ctx.fillRect = (0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+    </script>
   </body>
 </html>
