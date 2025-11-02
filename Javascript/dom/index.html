@@ -4,44 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      canvas {
+        background-color: white;
+        border: 3px solid black;
+      }
+    </style>
   </head>
   <body>
-    <canvas
-      id="canvas"
-      width="500"
-      height="500"
-      style="border: 2px solid"
-    ></canvas>
+    <canvas id="canvas" width="400" height="200"></canvas>
   </body>
   <script>
-    // 获取上下文对象
+    // 1.拿到canvas
     const canvas = document.getElementById('canvas');
+    // 2.拿到canvas上下文
     const ctx = canvas.getContext('2d');
 
-    //绘制矩形
-    //有填充
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(50, 50, 100, 100);
-    //边框矩形
-    ctx.strokeStyle = 'red';
-    ctx.lineWidth = 5;
-    ctx.strokeRect(150, 150, 100, 100);
+    // 确定图形
+    let ball = {
+      r: 15,
+      x: 15,
+      y: canvas.height - 16,
+      dx: 1,
+      color: 'blue',
+    };
 
-    // 线条
-    ctx.beginPath();
-    ctx.moveTo(300, 300);
-    ctx.lineTo(400, 400);
-    ctx.stroke();
+    // 绘制小球的函数
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+      ctx.fillStyle = ball.color;
+      ctx.fill();
+    }
 
-    // 圆
-    ctx.beginPath();
-    ctx.arc(100, 100, 100, 0, Math.PI * 2);
-    ctx.fillStyle = 'green';
-    ctx.fill();
+    // 更新小球位置 & 控制边界条件
+    function updateBall() {
+      ball.x += ball.dx;
 
-    // 文字
-    // ctx.font = '50px Arial';
-    // ctx.fillStyle = 'purple';
-    // ctx.fillText('Hello canvas', 50, 200);
+      // 控制边界条件 控制小球反弹
+      if (ball.x + ball.r > canvas.width || ball.x - ball.r < 0) {
+        ball.dx = -ball.dx;
+      }
+    }
+
+    // 动画循环
+    function move() {
+      // 1.擦除
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // 2.绘图
+      drawBall();
+      // 3.更新小球的位置 (更新背后小球的数据 x)
+      updateBall();
+      // 4.循环动画 requestAnimationFrame( )
+      requestAnimationFrame(move);
+    }
+
+    move();
   </script>
 </html>
