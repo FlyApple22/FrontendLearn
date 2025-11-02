@@ -8,65 +8,92 @@
       html,
       body {
         margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+        overflow: hidden;
       }
       canvas {
         background-color: white;
-        border: 3px solid black;
+        display: block;
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas" width="400" height="200"></canvas>
+    <canvas id="canvas"></canvas>
   </body>
   <script>
-    // 1.拿到canvas
+    // 1.拿到canvas上下文
     const canvas = document.getElementById('canvas');
-    // 2.拿到canvas上下文
     const ctx = canvas.getContext('2d');
 
-    // 确定图形
-    let ball = {
-      r: 15,
-      x: 15,
-      y: canvas.height - 16,
-      dx: 1,
-      color: 'blue',
-    };
+    // 2.初始化全局画布
+    function initCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    initCanvas();
+    // 适应窗口大小
+    window.addEventListener('resize', initCanvas);
 
-    // 绘制小球的函数
-    function drawBall() {
+    // 设置存放小球的容器
+    let allBalls = [];
+    // 设置颜色集
+    const colors = ['#4CBF88', '#F2B134', '#6F4A70', '#FF6275', '#00B5C4'];
+
+    // 3.定义小球
+    function defineBalls() {
+      const r = 5;
+      const x = Math.random() * (canvas.width - 2 * r) + r;
+      const y = Math.random() * (canvas.height - 2 * r) + r;
+      const dx = (Math.random() - 0.5) * 2;
+      const dy = (Math.random() - 0.5) * 2;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      return { x, y, r, dx, dy, color };
+    }
+
+    // 4.创建小球
+    function createBalls() {
+      allBalls = [];
+      for (let i = 0; i < 200; i++) {
+        allBalls.push(defineBalls());
+      }
+    }
+
+    // 5.绘制小球函数
+    function drawBall(ball) {
       ctx.beginPath();
       ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
       ctx.fillStyle = ball.color;
       ctx.fill();
+      console.log(123);
     }
 
-    // 更新小球位置 & 控制边界条件
-    function updateBall() {
+    // 6.更新小球位置 & 边界条件判断
+    function updateBalls(ball) {
       ball.x += ball.dx;
+      ball.y += ball.dy;
 
-      // 控制边界条件 控制小球反弹
       if (ball.x + ball.r > canvas.width || ball.x - ball.r < 0) {
         ball.dx = -ball.dx;
       }
+      if (ball.y + ball.r > canvas.height || ball.y - ball.r < 0) {
+        ball.dy = -ball.dy;
+      }
+
+      console.log(123);
     }
 
-    // 动画循环
+    // 循环小球的动画
     function move() {
-      // 1.擦除
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      // 2.绘图
-      drawBall();
-      // 3.更新小球的位置 (更新背后小球的数据 x)
-      updateBall();
-      // 4.循环动画 requestAnimationFrame( )
       requestAnimationFrame(move);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      console.log(allBalls);
+      for (let b of allBalls) {
+        drawBall(b);
+        updateBalls(b);
+      }
     }
 
+    createBalls();
     move();
   </script>
 </html>
