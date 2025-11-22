@@ -218,16 +218,18 @@ let token =
 
 // a();
 
-async function a() {
-  try {
-    const { data } = await axios.get(
-      `https://api.apiopen.top/api/getPersonDynamicList`,
-      { params: { page: 0, size: 10 }, headers: { token: token } }
-    );
-    console.log(data);
-    console.log(data.result.list);
-  } catch (error) {
-    console.log(error);
-  }
-}
-a();
+// async function a() {
+//   try {
+//     const { data } = await axios.get(
+//       `https://api.apiopen.top/api/getPersonDynamicList`,
+//       { params: { page: 0, size: 10 }, headers: { token: token } }
+//     );
+//     console.log(data);
+//     console.log(data.result.list);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// a();
+
+
