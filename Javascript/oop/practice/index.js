@@ -2,7 +2,14 @@
 // 1. 构造函数接收一个参数 name，并把 name 挂到实例上。
 // 2. 在 `Person.prototype` 上添加一个方法 `sayName()`，要求打印 name。
 // 3. 创建一个实例 p1，name 为“张三”，并调用 `p1.sayName()`。
+function Student(name) {
+  this.name = name;
+}
 
+Student.prototype.school = 'TUT';
+
+const s1 = new Student('李四');
+console.log(s1.__proto__);
 // 手写一个构造函数 `Student`：
 // 1. 构造函数接收 name，并把它挂在实例上。
 // 2. 在原型上添加一个属性 `school = "TUT"`（注意：是属性不是方法）。
