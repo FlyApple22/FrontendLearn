@@ -50,6 +50,69 @@
 // forEach 遍历数组 不会返回新的数组
 let a = [1, 2, 3];
 
-a.forEach((item) => {
-  console.log(item);
-});
+// a.forEach((item) => {
+//   console.log(item);
+// });
+
+//Map:映射数组，返回新数组
+// let newArray = a.map((e) => {
+//   return e + 2;
+// });
+// console.log(newArray);
+
+// let b = [
+//   { name: 'Alan', age: 18 },
+//   { name: 'Bob', age: 20 },
+// ];
+
+// let newArray = b.map((e) => {
+//   return e.name;
+// });
+// console.log(newArray);
+
+//filter:筛选数组，返回新数组
+
+// let c = [1, 2, 3, 4, 5, 6];
+
+// let newArray = c.filter((e) => {
+//   return e % 2 === 0;
+// });
+
+// console.log(newArray);
+
+// let b = [
+//   { name: 'Alan', age: 18 },
+//   { name: 'Bob', age: 20 },
+//   { name: 'John', age: 17 },
+// ];
+
+// let newArray = b.filter((e) => {
+//   return e.age >= 18;
+// });
+
+// console.log(newArray);
+
+//reduce:把所有折叠成一个值，返回结果不一定
+// let d = [1, 2, 3, 4];
+// let result = d.reduce((total, e) => {
+//   return total + e;
+// });
+
+// console.log(result);
+
+// let max = d.reduce((max, e) => {
+//   return e > max ? e : max;
+// });
+// console.log(max);
+
+let f = [
+  { name: 'apple', price: 10, count: 100 },
+  { name: 'banana', price: 8, count: 80 },
+  { name: 'orange', price: 5, count: 160 },
+];
+
+let total = f.reduce((total, e) => {
+  return total + e.price * e.count;
+}, 0);
+
+console.log(total);
