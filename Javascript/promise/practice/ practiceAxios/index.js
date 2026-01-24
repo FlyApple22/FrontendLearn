@@ -232,4 +232,11 @@ let token =
 // }
 // a();
 
+const a = {
+  name: 'Alan',
+  age: 18,
+  hobby: '篮球',
+};
 
+let { name } = a;
+console.log(name);
