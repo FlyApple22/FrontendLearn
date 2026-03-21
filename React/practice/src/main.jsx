@@ -1,19 +1,10 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import './index.css'
+import App from './App.jsx'
 
-// import StepCounter from './components/01StepCounter'
-
-export default function App() {
-  return (
-    <div className='grid'>
-      {/* <StepCounter />
-      <TimerLike />
-      <LoginValidator />
-      <FontClamp />
-      <ThemePreview />
-      <MiniCart />
-      <TodoLite />
-      <FilterPanel />
-      <ProfileSubmit /> */}
-    </div>
-  )
-}
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
