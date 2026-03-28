@@ -18,3 +18,35 @@
 //    * 提示：
 //    * - 建议用两个 state：count + fast
 //    * - 步长 step 用派生值（不要用 state）
+
+import { useState } from 'react'
+
+function StepCounter() {
+  const [count, setCount] = useState(0)
+  const [fast, setFast] = useState(false)
+  const step = fast ? 5 : 1
+
+  function dec() {
+    setCount((prev) => prev - step)
+  }
+
+  function inc() {
+    setCount((prev) => prev + step)
+  }
+
+  return (
+    <div>
+      <h1>当前人数：{count}</h1>
+      <h1>当前模式：{fast ? '快速' : '普通'}</h1>
+      <button disabled={count === 0} onClick={dec}>
+        —
+      </button>
+      <button disabled={count === 50} onClick={inc}>
+        +
+      </button>
+      <button onClick={() => setFast((p) => !p)}>模式</button>
+    </div>
+  )
+}
+
+export default StepCounter

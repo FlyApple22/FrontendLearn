@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useState } from 'react'
 
+//state 组件记忆 usestate创建state
 function App() {
   //写js的地方
-  const [count, setCount] = useState(0);
-
+  const [count, setCount] = useState(0)
   function add() {
-    setCount(count + 1);
+    setCount((prev) => prev + 1)
   }
+  const [name, setName] = useState('')
 
   //写html的地方
   return (
     <div>
-      <h1>当前数值:{count} </h1>
-      <button onClick={add}>点击加1</button>
+      <button onClick={add}>按钮</button>
+      <h1>{count}</h1>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
