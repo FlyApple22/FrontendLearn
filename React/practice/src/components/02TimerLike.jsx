@@ -23,3 +23,34 @@
  * - 你需要两个 state：likes（数字） + cooling（布尔）
  * - 可以用 setTimeout 实现 2 秒冷却（允许用，但不需要 useEffect）
  */
+
+import { useState } from 'react'
+
+function TimerLike() {
+  const [likes, setLikes] = useState(0)
+  const [cooling, setCooling] = useState(false)
+  const tip = cooling ? '冷却中…' : '可以继续点赞'
+
+  function a() {
+    if (cooling) return
+    setLikes((prev) => prev + 1)
+    setCooling(true)
+    setTimeout(() => {
+      setCooling(false)
+    }, 1000)
+  }
+
+  return (
+    <div className='card'>
+      <div className='row'>
+        <button onClick={a} disabled={cooling}>
+          👍 点赞
+        </button>
+      </div>
+      <p className='small'>{tip}</p>
+      <p className='like'>{likes}</p>
+    </div>
+  )
+}
+
+export default TimerLike
