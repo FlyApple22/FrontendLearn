@@ -25,3 +25,35 @@
  * - 用 3 个 state：username / password / msg
  * - “是否满足”建议用派生变量（不要做成 state）
  */
+
+import { useState } from 'react'
+
+function LoginValidator() {
+  const [username, setUsename] = useState('')
+  const [password, setPassword] = useState('')
+
+  return (
+    <div>
+      <div style={{ display: 'grid', gap: 8 }}>
+        <input
+          placeholder='请输入账号'
+          value={username}
+          onChange={(e) => {
+            setUsename(e.target.value)
+          }}
+        />
+        <input
+          type='password'
+          placeholder='请输入密码'
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value)
+          }}
+        />
+        <button>登录</button>
+      </div>
+    </div>
+  )
+}
+
+export default LoginValidator

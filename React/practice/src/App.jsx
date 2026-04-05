@@ -1,14 +1,16 @@
 import './index.css'
 
 import StepCounter from './components/01StepCounter'
+import TimerLike from './components/02TimerLike'
+import LoginValidator from './components/03LoginValidator'
 
 export default function App() {
   return (
     <div className='grid'>
       <StepCounter />
-      {/* <TimerLike />
+      <TimerLike />
       <LoginValidator />
-      <FontClamp />
+      {/* <FontClamp />
       <ThemePreview />
       <MiniCart />
       <TodoLite />
