@@ -31,18 +31,35 @@ import { useState } from 'react'
 function LoginValidator() {
   const [username, setUsename] = useState('')
   const [password, setPassword] = useState('')
+  const [msg, setMsg] = useState('')
+  const [tounch, setTounch] = useState({ userNameTounch: false, passWordTounch: false })
+
+  let useNameOk = username.length >= 3
+  let passWordOk = password.length >= 6
+
+  const login = username.length >= 3 && password.length >= 6
 
   return (
     <div>
       <div style={{ display: 'grid', gap: 8 }}>
         <input
+          onBlur={() => {
+            setTounch((prev) => {
+              return { ...prev, userNameTounch: true }
+            })
+          }}
           placeholder='请输入账号'
           value={username}
           onChange={(e) => {
             setUsename(e.target.value)
           }}
         />
+        {tounch.userNameTounch && <p>{useNameOk ? '' : '账号至少 3 个字符'}</p>}
+
         <input
+          onBlur={() => {
+            setTounch((prev) => ({ ...prev, passWordTounch: true }))
+          }}
           type='password'
           placeholder='请输入密码'
           value={password}
@@ -50,7 +67,15 @@ function LoginValidator() {
             setPassword(e.target.value)
           }}
         />
-        <button>登录</button>
+        {tounch.passWordTounch && <p>{passWordOk ? '' : '密码至少 6 个字符'}</p>}
+
+        <h1>{msg}</h1>
+        <button
+          onClick={() => {
+            setMsg(login ? `欢迎你，${username}` : '')
+          }}>
+          登录
+        </button>
       </div>
     </div>
   )
